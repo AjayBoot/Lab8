@@ -12,7 +12,7 @@ describe('Basic user flow for SPA ', () => {
     expect(numEntries).toBe(10);
   });
 
-  // test 2 is given
+  /* test 2 is given
   it('Test2: Make sure <journal-entry> elements are populated', async () => {
     let allArePopulated = true;
     let data, plainValue;
@@ -26,15 +26,20 @@ describe('Basic user flow for SPA ', () => {
     }
     expect(allArePopulated).toBe(true);
   }, 30000);
-
+  */
   it('Test3: Clicking first <journal-entry>, new URL should contain /#entry1', async () => {
     // implement test3: Clicking on the first journal entry should update the URL to contain “/#entry1”
 
+    await page.click('journal-entry');
+    expect(page.url()).toBe('http://127.0.0.1:5500/#entry1');
   });
 
   it('Test4: On first Entry page - checking page header title', async () => {
     // implement test4: Clicking on the first journal entry should update the header text to “Entry 1” 
 
+    const header = await page.$('header');
+    const headerText = header.toString(); 
+    expect(header.textContent).toBe('Entry 1');
   });
 
   it('Test5: On first Entry page - checking <entry-page> contents', async () => {
