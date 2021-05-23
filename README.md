@@ -19,3 +19,8 @@
 
 5. What would your beforeAll callback look like if you wanted to start from the settings page before every test case?
 
+    1.  `await page.goto('http://127.0.0.1:5500');`
+        
+        `await page.click('body img');` 
+        
+        `await page.waitForTimeout(500);`
