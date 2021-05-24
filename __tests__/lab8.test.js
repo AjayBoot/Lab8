@@ -4,7 +4,7 @@ describe('Basic user flow for SPA ', () => {
     await page.waitForTimeout(500);
   });
 
-  /* test 1 is given
+  // test 1 is given
   it('Test1: Initial Home Page - Check for 10 Journal Entries', async () => {
     const numEntries = await page.$$eval('journal-entry', (entries) => {
       return entries.length;
@@ -26,14 +26,14 @@ describe('Basic user flow for SPA ', () => {
     }
     expect(allArePopulated).toBe(true);
   }, 30000);
-  */
+  
   it('Test3: Clicking first <journal-entry>, new URL should contain /#entry1', async () => {
     // implement test3: Clicking on the first journal entry should update the URL to contain “/#entry1”
 
     await page.click('journal-entry');
     expect(page.url()).toBe('http://127.0.0.1:5500/#entry1');
   });
-  /*
+
   it('Test4: On first Entry page - checking page header title', async () => {
     // implement test4: Clicking on the first journal entry should update the header text to “Entry 1” 
     let header, headerText, plainValue;
@@ -56,7 +56,7 @@ describe('Basic user flow for SPA ', () => {
             alt: 'bee with sunglasses'
           }
         }
-      /
+      */
         let entry, data, plainValue; //used to get element from page
         let contentCorrect = true; //track if content is correct
         
@@ -92,7 +92,7 @@ describe('Basic user flow for SPA ', () => {
     plainValue = await attribute.jsonValue();
     expect(plainValue[0]).toBe('single-entry');
   });
-  */
+  
   it('Test7: Clicking the settings icon, new URL should contain #settings', async () => {
     // implement test7: Clicking on the settings icon should update the URL to contain “/#settings”
 
@@ -100,7 +100,6 @@ describe('Basic user flow for SPA ', () => {
     expect(page.url()).toBe('http://127.0.0.1:5500/#settings');    
   });
   
-  /*
   it('Test8: On Settings page - checking page header title', async () => {
     // implement test8: Clicking on the settings icon should update the header to be “Settings”
     let header, headerText, plainValue;
@@ -121,7 +120,6 @@ describe('Basic user flow for SPA ', () => {
     expect(plainValue[0]).toBe('settings');
 
   });
-*/
 
   it('Test10: Clicking the back button, new URL should be /#entry1', async() => {
     // implement test10: Clicking on the back button should update the URL to contain ‘/#entry1’
@@ -162,8 +160,8 @@ describe('Basic user flow for SPA ', () => {
   it('Test14: On second Entry page - new URL should contain /#entry2', async () => {
     let data, entry2, url;
     const entries = await page.$$('journal-entry');
-    entry2 = await entries[1];
-    await entry2.click();
+    await entries[1].click();
+    await page.waitForNavigation();
     url = await page.url();
     expect(url).toBe('http://127.0.0.1:5500/#entry2');
   }); 
@@ -233,7 +231,7 @@ describe('Basic user flow for SPA ', () => {
     expect(page.url()).toBe('http://127.0.0.1:5500/#entry2');
   });
   // create your own test 20
-  it('Test17: On 2nd entry page - check if going forward brings to home page', async () => {
+  it('Test20: On 2nd entry page - check if going forward brings to home page', async () => {
 
     await page.goForward();
     expect(page.url()).toBe('http://127.0.0.1:5500/');
