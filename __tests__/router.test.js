@@ -1,9 +1,10 @@
-import { TestScheduler } from '@jest/core';
-import { pushToHistory } from '../scripts/router.js';
 
 /**
  * @jest-environment jsdom
  */
+import { pushToHistory } from '../scripts/router.js';
+import { TestScheduler } from '@jest/core';
+
 
 test( 'Testing setting the settings page as a new state...', () =>{
 
