@@ -180,7 +180,7 @@ describe('Basic user flow for SPA ', () => {
   });
 
   // define and implement test16: Verify the entry page contents is correct when clicking on the second entry
-  it('Test16: On first Entry page - checking <entry-page> contents', async () => {
+  it('Test16: On 2nd Entry page - checking <entry-page> contents', async () => {
 
     /*
     {"date":"4/26/2021",
@@ -214,11 +214,28 @@ describe('Basic user flow for SPA ', () => {
   }, 10000);
 
   // create your own test 17
+  it('Test17: On 2nd entry page - check if clicking header takes back to home page.', async () => {
 
+    await page.click('h1');
+    expect(page.url()).toBe('http://127.0.0.1:5500/');
+  });
   // create your own test 18
+  it('Test18: On Home page - check if going back twice brings back to homepage.', async () => {
 
+    await page.goBack();
+    await page.goBack();
+    expect(page.url()).toBe('http://127.0.0.1:5500/');
+  });
   // create your own test 19
+  it('Test19: On Home page - check if going forward goes to entry 2', async () => {
 
+    await page.goForward();
+    expect(page.url()).toBe('http://127.0.0.1:5500/#entry2');
+  });
   // create your own test 20
-  
+  it('Test17: On 2nd entry page - check if going forward brings to home page', async () => {
+
+    await page.goForward();
+    expect(page.url()).toBe('http://127.0.0.1:5500/');
+  });
 });
